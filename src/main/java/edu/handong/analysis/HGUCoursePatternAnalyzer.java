@@ -30,8 +30,8 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	public void run(String[] args) {
 		
-		numOfStudents = 3;//Integer.parseInt(args[0]);
-		numOfCourses = 6;//Integer.parseInt(args[1]);
+		numOfStudents = Integer.parseInt(args[0]);
+		numOfCourses = Integer.parseInt(args[1]);
 	
 		students = initiateStudentArrayFromLines(lines);
 		
