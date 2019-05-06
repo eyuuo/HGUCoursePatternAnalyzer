@@ -67,7 +67,7 @@ public class HGUCoursePatternAnalyzer {
 		}
 	
 	
-		for(int i=0;i<3;) {
+		for(int i=0;i<numOfStudents;) {
 			for(int j=0;j<lines.length;j++) {
 				if(studentExist(students,students2[j])==false){
 					students[i] = new Student(lines[j].split(",")[1].trim()); i++;
@@ -75,8 +75,6 @@ public class HGUCoursePatternAnalyzer {
 					}
 			}
 		} 
-			
-		
 		return students;
 	}
 
@@ -90,7 +88,6 @@ public class HGUCoursePatternAnalyzer {
 		// TODO: implement this method
 		boolean same =true;
 
-	
 		for(int i=0;i<this.numOfStudents;i++){
 			if(students[i].getName().equals(student.getName())){  same =true; return same; }
 			else {same = false;}
@@ -104,10 +101,27 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
+		courses = new Course[this.numOfCourses];
+		Course[] courses2 = new Course[lines.length];
 		
-		// TODO: implement this method
+		for(int i=0;i<lines.length;i++) {
+			courses2[i] = new Course(lines[i].split(",")[2].trim()); 
+		}
 		
-		return null;
+		for(int i=0;i<this.numOfCourses;i++) {
+			courses[i] = new Course(" "); 
+		}
+
+		for(int i=0;i<numOfCourses;) {
+			for(int j=0;j<lines.length;j++) {
+				if(courseExist(courses,courses2[j])==false){
+					courses[i] = new Course(lines[j].split(",")[2].trim()); i++;
+					break;
+					}
+			}
+		} 
+		
+		return courses;
 	}
 
 	/**
@@ -117,10 +131,13 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean courseExist(Course[] courses, Course course) {
-		
-		// TODO: implement this method
+		boolean same =true;
 
-		return false;
+		for(int i=0;i<this.numOfCourses;i++){
+			if(courses[i].getCourseName().equals(course.getCourseName())){  same =true; return same; }
+			else {same = false;}
+			}
+		return same;
 	}
 
 }
