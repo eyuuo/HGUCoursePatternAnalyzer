@@ -19,10 +19,10 @@ public class HGUCoursePatternAnalyzer {
 						"2019-1, SJ Kim, Algorithm Analysis",
 						};
 
-	int numOfStudents;
-	int numOfCourses;
-	Student[] students;
-	Course[] courses;
+	int numOfStudents; //total number of students
+	int numOfCourses; //total number of courses
+	Student[] students; //save student list from the lines
+	Course[] courses; //save course list from the lines
 	
 	/**
 	 * This method runs our analysis logic to get the list of student and course names from lines.
@@ -41,6 +41,7 @@ public class HGUCoursePatternAnalyzer {
 		}
 		
 		courses = initiateCourseArrayFromLines(lines);
+		
 		System.out.println("Number of All Courses: " + numOfCourses);
 		for(Course course: courses) {
 			System.out.println(course.getCourseName());
