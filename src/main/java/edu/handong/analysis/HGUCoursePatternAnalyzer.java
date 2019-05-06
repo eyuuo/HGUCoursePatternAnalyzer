@@ -35,7 +35,7 @@ public class HGUCoursePatternAnalyzer {
 	
 		students = initiateStudentArrayFromLines(lines);
 		
-		System.out.println("Number of All Students: " + numOfStudents +":");
+		System.out.println("Number of All Students: " + numOfStudents);
 		for(Student student: students) {
 			System.out.println(student.getName());
 		}
