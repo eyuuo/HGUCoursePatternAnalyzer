@@ -30,12 +30,12 @@ public class HGUCoursePatternAnalyzer {
 	 */
 	public void run(String[] args) {
 		
-		numOfStudents = Integer.parseInt(args[0]);
-		numOfCourses = Integer.parseInt(args[1]);
+		numOfStudents = 3;//Integer.parseInt(args[0]);
+		numOfCourses = 6;//Integer.parseInt(args[1]);
 	
 		students = initiateStudentArrayFromLines(lines);
 		
-		System.out.println("Number of All Students: " + numOfStudents);
+		System.out.println("Number of All Students: " + numOfStudents +":");
 		for(Student student: students) {
 			System.out.println(student.getName());
 		}
@@ -55,11 +55,29 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
+		students = new Student[this.numOfStudents];
+		Student[] students2 = new Student[lines.length];
 		
-		// TODO: implement this method
+		for(int i=0;i<lines.length;i++) {
+			students2[i] = new Student(lines[i].split(",")[1].trim()); 
+		}
 		
+		for(int i=0;i<this.numOfStudents;i++) {
+			students[i] = new Student(" "); 
+		}
+	
+	
+		for(int i=0;i<3;) {
+			for(int j=0;j<lines.length;j++) {
+				if(studentExist(students,students2[j])==false){
+					students[i] = new Student(lines[j].split(",")[1].trim()); i++;
+					break;
+					}
+			}
+		}
+			
 		
-		return null;
+		return students;
 	}
 
 	/**
@@ -69,10 +87,15 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean studentExist(Student[] students, Student student) {
-		
 		// TODO: implement this method
+		boolean same =true;
 
-		return false;
+	
+		for(int i=0;i<this.numOfStudents;i++){
+			if(students[i].getName().equals(student.getName())){  same =true; return same; }
+			else {same = false;}
+			}
+		return same;
 	}
 	
 	/**
